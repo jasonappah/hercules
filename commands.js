@@ -41,7 +41,7 @@ window.FakeTerminal.command.about = function (instance) {
   base.execute = function () {
     writeLine(instance);
     write(
-      `Hi! I'm Jason, and I made this game in about 3 days for a project in my Latin III class. \n\nIf you're interested, the code will eventually be on my GitHub (https://jasonaa.me/github). \n\nTo build this, I used HTML/CSS/JS, and to supplement that I also used jQuery, Font Awesome, FakeTerminal, and Google Fonts. \n\nIt is being hosted on repl.it, but I may switch over to Vercel in the future.`,
+      `Hi! I'm Jason, and I made this game in about 5 days for a project in my Latin III class. \n\nIf you're interested, the code is on my GitHub (https://github.com/jasonappah/hercules). \n\nTo build this, I used HTML/CSS/JS, with jQuery, Font Awesome for icons, FakeTerminal, and Google Fonts. \n\nIt is currently being hosted on Vercel.`,
       instance
     );
     base.deferred.resolve();

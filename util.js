@@ -38,7 +38,6 @@ function renderButtons() {
             buttons[button].innerHTML = actions[button]["label"]
         }
     }
-    resizeButtons()
 }
 
 function commandInput() {
@@ -84,13 +83,6 @@ function simulateInput(where, string) {
         sendKey(where, key)
     }
     simulateEnter(where)
-}
-
-function resizeButtons() {
-    // jQuery("#btn1").fitText(TEXT_COMPRESSOR)
-    // jQuery("#btn2").fitText(TEXT_COMPRESSOR)
-    // jQuery("#btn3").fitText(TEXT_COMPRESSOR)
-    // jQuery("#btn4").fitText(TEXT_COMPRESSOR)
 }
 
 function buttonPress(buttonNo) {

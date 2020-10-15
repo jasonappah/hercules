@@ -119,54 +119,51 @@ window.FakeTerminal.command.play = function (instance) {
 
     instance.input.request().done(function (value) {
       write(actions[value]["label"], instance);
-      write(
-        "Eurystheus: The gods and I would like you to complete a few tasks.",
-        instance
-      );
-      buttonThing([
-        "Hercules: Why me? [0]",
-        "Hercules: No. [1]",
-        "Hercules: Fine. Let's just get this over with. [2]",
-      ]);
-        console.log("uwu")
-        
-        instance.input.request().done(function (value) {
-            console.log("owo")
-          write(actions[value]["label"], instance);
-          if (value != 2) {
-              write("Eurystheus: I thought you were the strongest in Greece.", instance)
-              buttonThing([
-                "Hercules: So what? [0]",
-                "Hercules: Well, yes... [1]"
-              ]);
-              instance.input.request().done(function (value) {
-                write(actions[value]["label"], instance);
-                  if (value == 1) {
-                    base.next()
-                  } else {
-                      write("Eurystheus: Well, if you don't want to complete these tasks, I'm sure the gods would love to have a little chat with you...", instance)
-                      buttonThing([
-                        "Hercules: Fine. Let's just get this over with. [0]"
-                      ]);
-                      instance.input.request().done(function () {
-                        base.next()
-                      })
-                }
-              })
-          } else {
-            base.next()
-          }
-      });
-      
-        
-        
-      // ending the game
-      base.terminate();
-      base.deferred.resolve(); // ending the command
-    });
+      console.log("VALUE", value)
+        write(
+          "Eurystheus: The gods and I would like you to complete a few tasks.",
+          instance
+        );
+        buttonThing([
+          "Hercules: Why me? [0]",
+          "Hercules: No. [1]",
+          "Hercules: Fine. Let's just get this over with. [2]",
+        ]);
+        console.log("uwu");
 
-    // requestInput(instance, base)
-    // instance.input.request().then(text => write(text, instance).then(base.deferred.resolve()))
+        instance.input.request().done(function (value1) {
+          console.log("owo");
+          write(actions[value1]["label"], instance);
+          if (value1 != 2) {
+            write("Eurystheus: I thought you were the strongest in Greece.", instance);
+            buttonThing([
+              "Hercules: So what? [0]",
+              "Hercules: Well, yes... [1]"
+            ]);
+            instance.input.request().done(function (value2) {
+              write(actions[value2]["label"], instance);
+              if (value2 == 1) {
+                base.next();
+              } else {
+                write("Eurystheus: Well, if you don't want to complete these tasks, I'm sure the gods would love to have a little chat with you...", instance);
+                buttonThing([
+                  "Hercules: Fine. Let's just get this over with. [0]"
+                ]);
+                instance.input.request().done(function () {
+                  base.next();
+                });
+              }
+            });
+          } else {
+            base.next();
+          }
+        });
+
+        // ending the game
+        base.terminate();
+        base.deferred.resolve(); // ending the command
+      });
+
 
     return base.deferred.promise();
   };

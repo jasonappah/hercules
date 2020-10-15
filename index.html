@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Hercules Game</title>
+
+	<link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/4ef309b93b.js" crossorigin="anonymous">
+
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
+	</script>
+	<script src="https://cdn.jsdelivr.net/gh/hellopablo/faketerminal@2.0.0/dist/faketerminal.js">
+	</script>
+	<link href="https://cdn.jsdelivr.net/gh/hellopablo/faketerminal@2.0.0/dist/faketerminal.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/blocks.css@0.3.0/dist/blocks.min.css" />
+</head>
+
+<body>
+	<div id="root">
+
+		<noscript class="white">You need JavaScript enabled to play this game.</noscript>
+
+		<div id="game-container">
+			<div id="terminal"></div>
+			<div id="terminal-buttons">
+                <button class="block hide term-button" id="btn1" onclick="buttonPress(1)"></button>
+                <button class="block hide term-button" onclick="buttonPress(2)" id="btn2"></button>
+                <button class="block hide term-button" onclick="buttonPress(3)" id="btn3"></button>
+                <button class="block hide term-button" onclick="buttonPress(4)" id="btn4"></button>
+            </div>
+		</div>
+
+		<footer>
+			<span>
+			<a href="https://jasonaa.me/github"><i class="fab fa-github"></i></a>
+            <a href="https://jasonaa.me"><i class="fas fa-external-link-alt"></i></a>
+            </span>
+		</footer>
+
+	</div>
+
+
+
+	<script src="commands.js">
+
+	</script>
+    <script src="util.js">
+
+	</script>
+    <script src="main.js">
+
+	</script>
+</body>
+
+</html>

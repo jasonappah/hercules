@@ -1,0 +1,92 @@
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+
+:root {
+    --accent: gold;
+    --monospace: 'Roboto Mono', monospace;
+    --sans: 'Inter', sans-serif;
+    --terminalHeight: 80%;
+    --terminalButtonsHeight: calc(100% - var(--terminalHeight));
+    --corner-radius: 8px;
+    
+}
+
+.block {
+    --block-background-color: var(--accent);
+}
+
+body {
+    padding: 0%;
+    margin: 0%;
+    background-color: #000000;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 100vh;
+}
+
+.white {
+    color: white;
+}
+
+.accent {
+    color: var(--accent);
+}
+
+span i {
+    font-size: 3vh;
+    padding-right: 1vw;
+    color: var(--accent);
+}
+
+span i:hover {
+    color: white;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 33vw;
+    height: 75vh;
+    border-radius: var(--corner-radius);
+    border: 1px solid var(--accent);
+}
+
+#root p, noscript {
+    font-family: var(--monospace);
+}
+
+#terminal, #terminal-buttons {
+    width: 100%;
+    border-radius: var(--corner-radius);
+}
+
+#terminal {
+    height: var(--terminalHeight);
+    background-color: black;
+    font-family: var(--monospace);
+    overflow:hidden;
+    font-size: 1em;
+    overflow-wrap: normal !important;
+}
+#terminal-buttons {
+    height: var(--terminalButtonsHeight);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: black;
+}
+
+.term-button {
+    height: 80%;
+    font-family: var(--sans);
+    flex-grow: 1;
+    font-size: auto;
+}
+

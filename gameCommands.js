@@ -91,7 +91,11 @@ window.FakeTerminal.command.play = function (instance) {
   //  Extend the base command
   window.FakeTerminal.command.apply(this, arguments);
 
-  var base = this;
+    var base = this;
+    
+    base.next = function () {
+        write("Eurystheus: Great. Your first task will be to kill the Nemean lion.", instance)
+    }
 
   base.info = function () {
     return {
@@ -111,7 +115,7 @@ window.FakeTerminal.command.play = function (instance) {
     writeLine(instance);
 
     write("Eurystheus: Hello Hercules.", instance);
-    buttonThing(["Hercules: Why have you sent for me?", "Hercules: *silence*"]);
+    buttonThing(["Hercules: Why have you sent for me? [0]", "Hercules: *silence* [1]"]);
 
     instance.input.request().done(function (value) {
       write(actions[value]["label"], instance);
@@ -120,14 +124,42 @@ window.FakeTerminal.command.play = function (instance) {
         instance
       );
       buttonThing([
-        "Hercules: Why me?",
-        "Hercules: No.",
-        "Hercules: Fine. Let's just get this over with.",
+        "Hercules: Why me? [0]",
+        "Hercules: No. [1]",
+        "Hercules: Fine. Let's just get this over with. [2]",
       ]);
-      instance.input.request().done(function (value) {
-        write(actions[value]["label"], instance);
+        console.log("uwu")
+        
+        instance.input.request().done(function (value) {
+            console.log("owo")
+          write(actions[value]["label"], instance);
+          if (value != 2) {
+              write("Eurystheus: I thought you were the strongest in Greece.", instance)
+              buttonThing([
+                "Hercules: So what? [0]",
+                "Hercules: Well, yes... [1]"
+              ]);
+              instance.input.request().done(function (value) {
+                write(actions[value]["label"], instance);
+                  if (value == 1) {
+                    base.next()
+                  } else {
+                      write("Eurystheus: Well, if you don't want to complete these tasks, I'm sure the gods would love to have a little chat with you...", instance)
+                      buttonThing([
+                        "Hercules: Fine. Let's just get this over with. [0]"
+                      ]);
+                      instance.input.request().done(function () {
+                        base.next()
+                      })
+                }
+              })
+          } else {
+            base.next()
+          }
       });
-
+      
+        
+        
       // ending the game
       base.terminate();
       base.deferred.resolve(); // ending the command

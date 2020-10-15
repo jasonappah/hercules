@@ -52,8 +52,8 @@ span i:hover {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 33vw;
-    height: 75vh;
+    width: 500px;
+    height: 650px;
     border-radius: var(--corner-radius);
     border: 1px solid var(--accent);
 }

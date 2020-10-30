@@ -116,23 +116,25 @@ window.FakeTerminal.command.play = function (instance) {
 
     write("Eurystheus: Hello Hercules.", instance);
     buttonThing(["Hercules: Why have you sent for me? [0]", "Hercules: *silence* [1]"]);
-
+    // stops execution if there is an error. i have been having trouble with the logic here and this appears to fix it
+    window.onerror()
     instance.input.request().done(function (value) {
+      console.log(actions, value, actions[value])
       write(actions[value]["label"], instance);
       console.log("VALUE", value)
         write(
           "Eurystheus: The gods and I would like you to complete a few tasks.",
           instance
         );
+        
         buttonThing([
           "Hercules: Why me? [0]",
           "Hercules: No. [1]",
-          "Hercules: Fine. Let's just get this over with. [2]",
+          "Hercules: Fine. Let's just get this over with. [2]"
         ]);
-        console.log("uwu");
 
         instance.input.request().done(function (value1) {
-          console.log("owo");
+          
           write(actions[value1]["label"], instance);
           if (value1 != 2) {
             write("Eurystheus: I thought you were the strongest in Greece.", instance);
@@ -174,7 +176,9 @@ window.FakeTerminal.command.play = function (instance) {
 function buttonThing(responses) {
   actions = [];
   for (res in responses) {
-    actions.push({ action: res, label: responses[res] });
+    var resObj = { action: res, label: responses[res] }
+    console.log("RESOBJ", resObj)
+    actions.push(resObj);
   }
   length = responses.length;
   while (actions.length != MAX_BUTTONS_NO) {

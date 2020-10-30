@@ -104,3 +104,20 @@ function modeCheck() {
 
     console.log("mode", mode)
 }
+
+window.onerror = function (msg, url, lineNo, columnNo, error) {
+    var string = msg.toLowerCase();
+    var substring = "script error";
+    if (string.indexOf(substring) > -1){
+      alert('Script Error: See Browser Console for Detail');
+    } else {
+      var message = [
+        'Runtime Error: ' + msg,
+        'Line: ' + lineNo,
+        'Column: ' + columnNo,
+      ].join("\n")
+        window.alert(`We encountered an error! Please refresh to continue! Here is the error message. \n ${message}`)
+    }
+  
+    return false;
+  };
